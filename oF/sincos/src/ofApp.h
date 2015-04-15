@@ -20,14 +20,26 @@ public:
     //		void gotMessage(ofMessage msg);
     
     
+    int drawX, drawY;
+    int size;
+    
+    
+    
 };
 
 //--------------------------------------------------------------
 void ofApp::setup(){
     
     ofSetVerticalSync(true);
-    ofBackground(0,0,0);
+    ofBackground(0);
     ofSetCircleResolution(100);
+    
+    size = 150;
+    drawX = (int)ofGetWidth() / size;
+    drawY = (int)ofGetHeight() /size;
+    
+    ofSetColor(255);
+
     
 }
 
@@ -38,57 +50,63 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    //    ofSeedRandom(0);
-    float t = ofGetElapsedTimef()*3;
-    float t2 = ofGetElapsedTimef()*2;
+    ofSeedRandom(0);
+    float t = ofGetElapsedTimef()*0.1;
     
-    float step = ofRandomf() * 3.2 + 10.1;
-    float rotate = ofRandomf() * 4.02 + 30.02;
-    float freq = ofRandom(1) * 3.2 + 0.5;
-    
-    float rand = t;
-    
-    if ((int)t2 % 10 ==0){
-        t = t * ofRandom(-2, 2);
-        
+    t = - sin(t);
+
+//    cout << t << endl;
+
+//    if ((int)t % 2001000 != 0){
+    if(1 != 1){
         float xorig = ofGetWidth() / 2;
         float yorig = ofGetHeight() / 2;
-        
-        for (int k = 0; k < 200; k++){
+
+        float c = t;
+        if(c > 20){
+            c=2.0;
+        }
+//        c = ofMap(c, -1, 1, 3, 20);
+    
+        for (int k = 0; k < ofGetWindowHeight()/2.5; k++){
             
-            float radius = 20 + k;
-            float angle = ofGetElapsedTimef() * (1 + k / 10.0);
-            float x = xorig + radius * cos(angle);
-            float y = yorig + radius * -sin(angle);
+            //                    float radius = size;
+            float angle = ofGetElapsedTimef()*ofGetWindowHeight()/2.5 /1.0; //ofGetElapsedTimef() * (1 + k / 100.0);
             
-            ofSetColor(255,255,255);
+            float rad = t*k * PI / 180;
+            
+            float v = cos(c *rad);
+            float r = ofGetWindowHeight()/2.5* v;
+            float x = xorig + r * cos(t+rad);
+            float y = yorig + r * sin(t+rad);
+            
             ofCircle(x, y, 2);
         }
-        
-        
     }else{
         
         
-        for (int i = 1; i < 5; i++) {
-            for (int j = 1; j < 4; j++) {
-                float xorig = ofGetWidth() / 5 * (float)i;
-                float yorig = ofGetHeight() / 4 *  (float)j;
+        for (int i = 1; i < drawX; i++) {
+            for (int j = 1; j < drawY; j++) {
                 
-                for (int k = 0; k < 200; k++){
+                float xorig = ofGetWidth() / drawX * (float)i;
+                float yorig = ofGetHeight() / drawY *  (float)j;
+                float c = ofMap(ofRandom(-1,1), -1, 1, 1.2, 4);
+                
+//                cout << c << endl;
+                
+                
+                for (int k = 0; k < size; k= k+4){
                     
-                    float radius = k*0.5;
-                    float angle = ofGetElapsedTimef() * (1 + k / 100.0);
-                    float x = xorig + radius * cos(angle+t+j);
-                    float y = yorig + radius * -sin(angle+t2+i) ;
+//                    float angle = ofGetElapsedTimef()*size /1.0; //ofGetElapsedTimef() * (1 + k / 100.0);
                     
-                    //                    float x = xorig + cos(rotate *  step *k) + radius;
-                    //                   float y = yorig + sin(rotate * step * k) + radius;
+                    float speed = t*k*0.5 ;
+                    float verocity = cos(c *speed);
+                    float radious = size*0.45* verocity;
+                    float x = xorig + radious * cos(speed);
+                    float y = yorig + radious * sin(speed);
                     
-                    //                    tX = target.x + Math.cos(target.rotate + target.step * ii) * tRad;
-                    //                    tY = target.y + Math.sin(target.rotate + target.step * ii) * tRad;
                     
-                    ofSetColor(255,255,255);
-                    ofCircle(x, y, 2);
+                    ofCircle(x, y, 1);
                 }
             }
         }
@@ -97,6 +115,14 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
+    switch (key) {
+        case 'f':
+            ofToggleFullscreen();
+            break;
+            
+        default:
+            break;
+    }
     
 }
 
@@ -127,6 +153,9 @@ void ofApp::mouseReleased(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::windowResized(int w, int h){
+    drawX = (int)ofGetWidth() / size;
+    drawY = (int)ofGetHeight() / size;
+    
     
 }
 
