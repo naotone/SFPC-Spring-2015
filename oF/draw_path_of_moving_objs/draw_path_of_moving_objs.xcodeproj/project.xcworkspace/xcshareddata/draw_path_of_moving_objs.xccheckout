@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>2B389438-BBAD-4902-83AB-FC8454084B01</string>
+	<key>IDESourceControlProjectName</key>
+	<string>draw_path_of_moving_objs</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>79C740B32F74717EDB599D9D57B589D84FA8D9FC</key>
+		<string>github.com:naotone/SFPC-Spring-2015.git</string>
+		<key>BB43E583EDAF4EC4D023E2841437F12D25BC0DB3</key>
+		<string>github.com:satoruhiga/ofxAfterEffectsKeyframeParser.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>oF/draw_path_of_moving_objs/draw_path_of_moving_objs.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>79C740B32F74717EDB599D9D57B589D84FA8D9FC</key>
+		<string>../../../..</string>
+		<key>BB43E583EDAF4EC4D023E2841437F12D25BC0DB3</key>
+		<string>../../../../../addons/ofxAfterEffectsKeyframeParser</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:naotone/SFPC-Spring-2015.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>79C740B32F74717EDB599D9D57B589D84FA8D9FC</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>BB43E583EDAF4EC4D023E2841437F12D25BC0DB3</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxAfterEffectsKeyframeParser</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>79C740B32F74717EDB599D9D57B589D84FA8D9FC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SFPC</string>
+		</dict>
+	</array>
+</dict>
+</plist>

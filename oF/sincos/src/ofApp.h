@@ -53,7 +53,7 @@ void ofApp::draw(){
     ofSeedRandom(0);
     float t = ofGetElapsedTimef()*0.1;
     
-    t = - sin(t);
+    t = sin(t);
 
 //    cout << t << endl;
 
@@ -95,13 +95,14 @@ void ofApp::draw(){
 //                cout << c << endl;
                 
                 
-                for (int k = 0; k < size; k= k+4){
+                for (int k = 0; k < size; k= k+3
+                     ){
                     
 //                    float angle = ofGetElapsedTimef()*size /1.0; //ofGetElapsedTimef() * (1 + k / 100.0);
                     
                     float speed = t*k*0.5 ;
-                    float verocity = cos(c *speed);
-                    float radious = size*0.45* verocity;
+                    float velocity = cos(c *speed);
+                    float radious = size*0.45* velocity;
                     float x = xorig + radious * cos(speed);
                     float y = yorig + radious * sin(speed);
                     
@@ -111,6 +112,8 @@ void ofApp::draw(){
             }
         }
     }
+    float kk = 8.62;
+    cout << kk * 100.0 << endl;
 }
 
 //--------------------------------------------------------------
