@@ -31,7 +31,5 @@ public:
     float x2, y2;
     
     int playCount;
-    
-    ofTrueTypeFont text;
-    
+        
 };

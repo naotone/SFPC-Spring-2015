@@ -1,0 +1,23 @@
+<html>
+<head>
+    <title>Anagram test</title>
+    <script type="text/javascript">
+        function getAnagrams(){
+            var sentence = document.getElementById("sentence").value;
+            xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4) {
+                    if (xmlhttp.status == 200) {
+                        document.getElementById("result").innerHTML = xmlhttp.responseText;
+                    }
+                }
+            }
+            xmlhttp.open("GET","http://localhost:8000?sentence="+sentence);
+            xmlhttp.send();
+            //alert(sentence);
+        }
+    </script>
+</head>
+<input id="sentence" name="sentence"/><input type="button" onclick="getAnagrams()" value="Anagrams!"/>
+<div id="result">The result will appear here</div>
+</html>

@@ -105,7 +105,17 @@ void ofApp::draw(){
                     float radious = size*0.45* velocity;
                     float x = xorig + radious * cos(speed);
                     float y = yorig + radious * sin(speed);
+ //
                     
+                    
+                    
+                    
+                    
+                    //float rad = t*k*10 * PI /180 ;
+//                    float velocity = cos(c * rad);
+//                    float radious = size*0.45* velocity;
+//                    float x = xorig + radious * cos(rad);
+//                    float y = yorig + radious * sin(rad);
                     
                     ofCircle(x, y, 1);
                 }

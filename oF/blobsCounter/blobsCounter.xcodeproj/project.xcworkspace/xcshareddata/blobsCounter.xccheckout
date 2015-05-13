@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>18ED1867-7740-491F-9C2D-B5FDC04FD87B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>blobsCounter</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>37526DA425E5430474A14FBFA1BC4525160B5FC1</key>
+		<string>github.com:kylemcdonald/ofxCv.git</string>
+		<key>79C740B32F74717EDB599D9D57B589D84FA8D9FC</key>
+		<string>github.com:naotone/SFPC-Spring-2015.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>oF/blobsCounter/blobsCounter.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>37526DA425E5430474A14FBFA1BC4525160B5FC1</key>
+		<string>../../../../../addons/ofxCv</string>
+		<key>79C740B32F74717EDB599D9D57B589D84FA8D9FC</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:naotone/SFPC-Spring-2015.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>79C740B32F74717EDB599D9D57B589D84FA8D9FC</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>37526DA425E5430474A14FBFA1BC4525160B5FC1</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxCv</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>79C740B32F74717EDB599D9D57B589D84FA8D9FC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SFPC</string>
+		</dict>
+	</array>
+</dict>
+</plist>

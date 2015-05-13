@@ -1,6 +1,4 @@
 #include "ofApp.h"
-
-//--------------------------------------------------------------
 void ofApp::setup(){
     ofSetWindowShape(1280, 720 + 200);
     
@@ -10,7 +8,7 @@ void ofApp::setup(){
     key.dumpTrackName();
     
     player.loadMovie("sample.mov");
-//    player.loadMovie("sample1.mp4");
+    //    player.loadMovie("sample1.mp4");
     player.play();
     
 }
@@ -36,10 +34,10 @@ void ofApp::update(){
         
         pt1.set(x1, y1);
         lineX.addVertex(pt1);
-
+        
         pt2.set(x2, y2);
         lineY.addVertex(pt2);
-
+        
     }
     
     if (F == player.getTotalNumFrames()){
@@ -48,7 +46,7 @@ void ofApp::update(){
     //        cout << F << endl;
     //        cout << playCount << endl;
     
-
+    
     
 }
 
@@ -65,21 +63,26 @@ void ofApp::draw(){
     
     ofSetColor(0);
     ofDrawBitmapString("Time: "+ofToString(F), 10, ofGetHeight()-180);
-
+    
+    ofSetLineWidth(1);
+    
+    float t =  ofGetElapsedTimef()*10;
+    
+    
     ofSetColor(0, 0, 255);
     lineX.draw();
     ofCircle(x1, y1, 4);
-
-    ofDrawBitmapString("X: "+ofToString(y1), x1, y1);
-
+    
+    ofDrawBitmapString(" X: "+ofToString(x), x1, y1);
+    
     ofSetColor(255, 0, 0);
     lineY.draw();
     ofCircle(x2, y2, 4);
-
-    ofDrawBitmapString("Y: "+ofToString(y2), x2, y2);
+    
+    ofDrawBitmapString(" Y: "+ofToString(720-y), x2, y2);
     
     
-    
+        
 }
 
 //--------------------------------------------------------------
@@ -132,3 +135,4 @@ void ofApp::gotMessage(ofMessage msg){
 void ofApp::dragEvent(ofDragInfo dragInfo){
     
 }
+
