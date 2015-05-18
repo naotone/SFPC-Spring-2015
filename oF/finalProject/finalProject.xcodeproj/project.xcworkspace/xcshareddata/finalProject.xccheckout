@@ -5,20 +5,28 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>98A0B084-6281-4512-B631-F6B6F2848BCA</string>
+	<string>BD9E1C2C-9C4E-41B8-A2B9-1F2EE83836F7</string>
 	<key>IDESourceControlProjectName</key>
 	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>37526DA425E5430474A14FBFA1BC4525160B5FC1</key>
+		<string>github.com:kylemcdonald/ofxCv.git</string>
 		<key>79C740B32F74717EDB599D9D57B589D84FA8D9FC</key>
 		<string>github.com:naotone/SFPC-Spring-2015.git</string>
+		<key>97FDCF03A971289FFED99A88138A5909EA5F5D0C</key>
+		<string>github.com:satoruhiga/ofxISF.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>oF/imageDraw/imageDraw.xcodeproj/project.xcworkspace</string>
+	<string>oF/finalProject/finalProject.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>37526DA425E5430474A14FBFA1BC4525160B5FC1</key>
+		<string>../../../../../addons/ofxCv</string>
 		<key>79C740B32F74717EDB599D9D57B589D84FA8D9FC</key>
 		<string>../../../..</string>
+		<key>97FDCF03A971289FFED99A88138A5909EA5F5D0C</key>
+		<string>../../../../../addons/ofxISF</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:naotone/SFPC-Spring-2015.git</string>
@@ -28,6 +36,22 @@
 	<string>79C740B32F74717EDB599D9D57B589D84FA8D9FC</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>37526DA425E5430474A14FBFA1BC4525160B5FC1</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxCv</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>97FDCF03A971289FFED99A88138A5909EA5F5D0C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxISF</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
