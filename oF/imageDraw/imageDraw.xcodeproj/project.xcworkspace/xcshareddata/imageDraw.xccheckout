@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>98A0B084-6281-4512-B631-F6B6F2848BCA</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>imageDraw</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>79C740B32F74717EDB599D9D57B589D84FA8D9FC</key>
 		<string>github.com:naotone/SFPC-Spring-2015.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>oF/imageDraw/imageDraw.xcodeproj/project.xcworkspace</string>
+	<string>oF/imageDraw/imageDraw.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>79C740B32F74717EDB599D9D57B589D84FA8D9FC</key>

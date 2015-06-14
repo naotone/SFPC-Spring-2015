@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-               BuildableName = "3dPartcle.app"
-               BlueprintName = "3dPartcle"
-               ReferencedContainer = "container:3dPartcle.xcodeproj">
+               BuildableName = "finalProject_projector.app"
+               BlueprintName = "finalProject_projector"
+               ReferencedContainer = "container:finalProject_projector.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-            BuildableName = "3dPartcle.app"
-            BlueprintName = "3dPartcle"
-            ReferencedContainer = "container:3dPartcle.xcodeproj">
+            BuildableName = "finalProject_projector.app"
+            BlueprintName = "finalProject_projector"
+            ReferencedContainer = "container:finalProject_projector.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -52,9 +52,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-            BuildableName = "3dPartcle.app"
-            BlueprintName = "3dPartcle"
-            ReferencedContainer = "container:3dPartcle.xcodeproj">
+            BuildableName = "finalProject_projector.app"
+            BlueprintName = "finalProject_projector"
+            ReferencedContainer = "container:finalProject_projector.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -70,9 +70,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-            BuildableName = "3dPartcle.app"
-            BlueprintName = "3dPartcle"
-            ReferencedContainer = "container:3dPartcle.xcodeproj">
+            BuildableName = "finalProject_projector.app"
+            BlueprintName = "finalProject_projector"
+            ReferencedContainer = "container:finalProject_projector.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

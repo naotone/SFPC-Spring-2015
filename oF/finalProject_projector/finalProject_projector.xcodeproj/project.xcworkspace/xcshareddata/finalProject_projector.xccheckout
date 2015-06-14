@@ -5,20 +5,24 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>0AC79BA1-2AAC-4724-A855-83DAD592636D</string>
+	<string>10A46414-A0AA-4193-A202-EBEE57C9403B</string>
 	<key>IDESourceControlProjectName</key>
-	<string>3dPartcle</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>79C740B32F74717EDB599D9D57B589D84FA8D9FC</key>
 		<string>github.com:naotone/SFPC-Spring-2015.git</string>
+		<key>F4CCB893AFADB97238A965FD2F28717F1CAAE613</key>
+		<string>github.com:astellato/ofxSyphon.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>oF/3dPartcle/3dPartcle.xcodeproj</string>
+	<string>oF/finalProject_projector/finalProject_projector.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>79C740B32F74717EDB599D9D57B589D84FA8D9FC</key>
 		<string>../../../..</string>
+		<key>F4CCB893AFADB97238A965FD2F28717F1CAAE613</key>
+		<string>../../../../../addons/ofxSyphon</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:naotone/SFPC-Spring-2015.git</string>
@@ -28,6 +32,14 @@
 	<string>79C740B32F74717EDB599D9D57B589D84FA8D9FC</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F4CCB893AFADB97238A965FD2F28717F1CAAE613</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxSyphon</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

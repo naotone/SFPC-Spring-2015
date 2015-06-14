@@ -6,9 +6,13 @@
 #include "ofxOsc.h"
 #include "ofxGui.h"
 #include "ofxISF.h"
+#include "ofxSyphon.h"
 
-#define HOST "127.0.0.1"
-#define PORT 12345
+#define ME "127.0.0.1"
+//#define PROJ "127.0.0.1"
+#define YOU "127.0.0.1"
+#define PORT 11111
+#define PORT_PROJ 11112
 
 class ofApp : public ofBaseApp{
     
@@ -33,7 +37,7 @@ public:
     void drawGui();
     
     ofVideoGrabber grabber;
-    ofxOscSender sender;
+    ofxOscSender me, you, proj;
     ofVideoPlayer video;
     ofTrueTypeFont verlag;
     
@@ -48,10 +52,7 @@ public:
     static const int camWidth = 1280;
     static const int camHeight = 720;
     
-    //    static const int port = 12345;
-    //    static const string host = 10.0.1.255;
-    
-    ofImage grayImage;
+    ofImage grayImage, syphonImage;
     int pixelX, pixelY;
     
     vector<int> binary, binary1;
@@ -61,7 +62,8 @@ public:
     ofVboMesh mesh;
     
     ofFbo mFbo, mFbo1;
-//    int fadeAmnt;
+    ofPixels pixels;
+    //    int fadeAmnt;
     
     ofxISF::Shader isf;
     
@@ -70,6 +72,19 @@ public:
     ofxIntSlider fadeAmnt;
     ofxIntSlider speed;
     ofxFloatSlider shiftY;
+    
+    
+    void serverAnnounced(ofxSyphonServerDirectoryEventArgs &arg);
+    void serverUpdated(ofxSyphonServerDirectoryEventArgs &args);
+    void serverRetired(ofxSyphonServerDirectoryEventArgs &arg);
+    
+    ofxSyphonServerDirectory dir;
+    ofxSyphonClient client;
+    int dirIdx;
+    
+    ofxSyphonServer mainOutputSyphonServer;
+    
+    
     
 };
 
@@ -90,80 +105,82 @@ void ofApp::setup(){
     bTalking = false;
     bGui = false;
     
-    
-    
     ofBackground(230);
     ofSetWindowPosition(1920/2, 0);
-    ofSetWindowShape(1920/2, 1080/2);
+    ofSetWindowShape(1920, 1200);
     ofSetFrameRate(60);
     ofSetVerticalSync(true);
     grabber.initGrabber(camWidth, camHeight);
-    grayImage.allocate(camWidth, camHeight, OF_IMAGE_GRAYSCALE);
+    grayImage.allocate(1920, 1200, OF_IMAGE_GRAYSCALE);
     
     video.loadMovie("fingers.mov");
     video.play();
     
-    sender.setup(HOST, PORT);
+    me.setup(ME, PORT);
+    you.setup(YOU, PORT);
+    proj.setup(ME, PORT_PROJ);
     
     verlag.loadFont("Verlag-XLight.otf", 40);
     mFbo.allocate(1920, 1200, GL_RGBA32F_ARB);
     mFbo.begin();
     ofClear(255,255,255,0);
     mFbo.end();
-
-//    isf.setup(1280, 720, GL_RGB32F);
-//    isf.load("edge.fs");
-//    isf.setImage("inputImage", grabber.getTextureReference());
-
+    
+    mFbo1.allocate(1920, 1200, GL_RGB);
+    
+    //    isf.setup(1280, 720, GL_RGB32F);
+    //    isf.load("edge.fs");
+    //    isf.setImage("inputImage", grabber.getTextureReference());
+    
     
     gui.setup();
     gui.add(speed.setup("speed", 1, 0, 100));
     gui.add(fadeAmnt.setup("fade", 0, 0, 100));
     
+    dir.setup();
+    client.setup();
+    
+    ofAddListener(dir.events.serverAnnounced, this, &ofApp::serverAnnounced);
+    ofAddListener(dir.events.serverRetired, this, &ofApp::serverRetired);
+    
+    dirIdx = -1;
+    
+    mainOutputSyphonServer.setName("1");
+    
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-//    ofEnableAlphaBlending();
     
     grabber.update();
-//    if(grabber.isFrameNew()){
-        drawGrabber();
-        sendOsc();
-//    }
-    
+    drawGrabber();
+    sendOsc();
     
     mFbo.begin();
     drawFbo();
     mFbo.end();
-
     
-//    isf.update();
-
+    //    isf.update();
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::drawGrabber(){
     binary.clear();
-
+    
     convertColor(grabber, grayImage, CV_RGB2GRAY);
     
     grayImage.update();
-    for (int i = 0; i < camWidth; i+=40) {
-//        for(int j = 0; j < camHeight; j+=100){
-            ofColor mColor = grayImage.getColor(i, ofGetHeight()/2);
-            int brightness = mColor.getBrightness()+ 100 ;
-            brightness = ofMap(brightness, 0, 255, 0, 1);
-            //                    brightness = ofMap(brightness, 0, 100, 0, 1);
-            
-            if (binary.size() < 32) {
-                binary.push_back(brightness);
-            }
-//        }
-        //  cout << "sum"<< i << " = " << std::accumulate(binary.begin(), binary.end(), 0) << endl;
-        //  cout << "avg "<< i << "= "<<std::accumulate(binary.begin(), binary.end(), 0) / binary.size() << endl;
-        //  binary.clear();
+    for (int i = 0; i < 1920; i+=60) {
+        ofColor mColor = grayImage.getColor(i, 1200/2);
+        int brightness = mColor.getBrightness() ;
+        brightness = ofMap(brightness, 0, 255, 0, 1);
         
+        cout << brightness << endl;
+        if (binary.size() < 32) {
+            binary.push_back(brightness);
+        }
     }
     
 }
@@ -174,14 +191,14 @@ void ofApp::drawFbo(){
         ofClear(255,255,255, 0);
     }
     
-//    fadeAmnt = 1;
-//    if(ofGetKeyPressed('1')){
-//        fadeAmnt = 1;
-//    }else if(ofGetKeyPressed('2')){
-//        fadeAmnt = 5;
-//    }else if(ofGetKeyPressed('3')){
-//        fadeAmnt = 15;
-//    }
+    //    fadeAmnt = 1;
+    //    if(ofGetKeyPressed('1')){
+    //        fadeAmnt = 1;
+    //    }else if(ofGetKeyPressed('2')){
+    //        fadeAmnt = 5;
+    //    }else if(ofGetKeyPressed('3')){
+    //        fadeAmnt = 15;
+    //    }
     
     ofFill();
     ofSetColor(255,255,255, fadeAmnt);
@@ -197,7 +214,7 @@ void ofApp::drawFbo(){
         }else{
             ofSetColor(255,255,255, 250);
         }
-//        ofLine(width * i,shiftY, width * (i+1), shiftY);
+        //        ofLine(width * i,shiftY, width * (i+1), shiftY);
         ofRect(width*i, shiftY, width, 1);
         
     }
@@ -206,11 +223,13 @@ void ofApp::drawFbo(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    //ofSetWindowTitle(ofToString(ofGetFrameRate()));
-        shiftY = (ofGetFrameNum()*speed) % 1200;
-//        shiftY = (ofGetElapsedTimeMillis() / speed) % 1200;
-//    shiftY = modf((ofGetElapsedTimeMillis() / 10),  1200);
-
+    ofSetColor(255);
+    
+    mFbo1.begin();
+    ofClear(255,255,255,0);
+    client.draw(0, 0);
+    mFbo1.end();
+    shiftY = (ofGetFrameNum()*speed) % 1200;
     if(bCam){
         grayImage.draw(0, 0,  ofGetWidth(), ofGetHeight());
     }
@@ -226,10 +245,13 @@ void ofApp::draw(){
     
     ofSetColor(255);
     
+    mainOutputSyphonServer.publishScreen();
+    
+    
     
     if(bDebug){
         ofSetColor(255);
-        grabber.draw(0, 0, camWidth/2, camHeight/2);
+        //        grabber.draw(0, 0, camWidth/2, camHeight/2);
         grayImage.draw(camWidth,0, camWidth/2,camHeight/2);
         //        cout << "x: " << pixelX << "y: "<< pixelY << endl;
         
@@ -242,28 +264,44 @@ void ofApp::draw(){
         gui.draw();
     }
     
+    
+}
+///////////////////////////////////////////////////////////////////////////
+void ofApp::serverAnnounced(ofxSyphonServerDirectoryEventArgs &arg)
+{
+    for( auto& dir : arg.servers ){
+        ofLogNotice("ofxSyphonServerDirectory Server Announced")<<" Server Name: "<<dir.serverName <<" | App Name: "<<dir.appName;
+    }
+    dirIdx = 0;
+}
+
+void ofApp::serverUpdated(ofxSyphonServerDirectoryEventArgs &arg)
+{
+    for( auto& dir : arg.servers ){
+        ofLogNotice("ofxSyphonServerDirectory Server Updated")<<" Server Name: "<<dir.serverName <<" | App Name: "<<dir.appName;
+    }
+    dirIdx = 0;
+}
+
+void ofApp::serverRetired(ofxSyphonServerDirectoryEventArgs &arg)
+{
+    for( auto& dir : arg.servers ){
+        ofLogNotice("ofxSyphonServerDirectory Server Retired")<<" Server Name: "<<dir.serverName <<" | App Name: "<<dir.appName;
+    }
+    dirIdx = 0;
 }
 
 //--------------------------------------------------------------
 void ofApp::sendOsc(){
     ofxOscMessage m, m1;
     m.setAddress("/pix");
-    //            cout << binary.size() << endl;
+    
+    cout << binary << endl;
     
     for (int k = 0 ; k < binary.size(); k++) {
         m.addIntArg(binary[k]);
-        //        out = out + ofToString(binary[k]);
-        
-    }
-    //        cout << out << endl;
-    //    if(_out.size() > row){
-    //        _out.erase(_out.begin());
-    //    }
-    //    _out.push_back(out);
-    
-    //        cout << _out[0] << endl;
-    
-    sender.sendMessage(m);
+    me.sendMessage(m);
+    you.sendMessage(m);
     
     
     if(ofGetFrameNum() % 130 == 0 || ofGetFrameNum() % 80 == 0 ){
@@ -278,8 +316,12 @@ void ofApp::sendOsc(){
     }else{
         m1.addIntArg(0);
     }
-    sender.sendMessage(m1);
+    me.sendMessage(m1);
+    you.sendMessage(m1);
+    proj.sendMessage(m1);
 }
+
+
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     switch (key) {
@@ -313,7 +355,8 @@ void ofApp::keyPressed(int key){
         m.addFloatArg(3.5f);
         m.addStringArg("hello");
         m.addFloatArg(ofGetElapsedTimef());
-        sender.sendMessage(m);
+        me.sendMessage(m);
+        you.sendMessage(m);
     }
     
 }
@@ -335,6 +378,29 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
+    //press any key to move through all available Syphon servers
+    if (dir.size() > 0)
+    {
+        dirIdx++;
+        if(dirIdx > dir.size() - 1)
+            dirIdx = 0;
+        
+        client.set(dir.getDescription(dirIdx));
+        string serverName = client.getServerName();
+        string appName = client.getApplicationName();
+        
+        if(serverName == ""){
+            serverName = "null";
+        }
+        if(appName == ""){
+            appName = "null";
+        }
+        ofSetWindowTitle(serverName + ":" + appName);
+    }
+    else
+    {
+        ofSetWindowTitle("No Server");
+    }
     
 }
 

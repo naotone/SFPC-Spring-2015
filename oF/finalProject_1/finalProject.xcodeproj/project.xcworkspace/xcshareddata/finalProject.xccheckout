@@ -7,7 +7,7 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>BD9E1C2C-9C4E-41B8-A2B9-1F2EE83836F7</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>finalProject</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>37526DA425E5430474A14FBFA1BC4525160B5FC1</key>
@@ -16,9 +16,11 @@
 		<string>github.com:naotone/SFPC-Spring-2015.git</string>
 		<key>97FDCF03A971289FFED99A88138A5909EA5F5D0C</key>
 		<string>github.com:satoruhiga/ofxISF.git</string>
+		<key>F4CCB893AFADB97238A965FD2F28717F1CAAE613</key>
+		<string>github.com:astellato/ofxSyphon.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>oF/finalProject/finalProject.xcodeproj/project.xcworkspace</string>
+	<string>oF/finalProject_1/finalProject.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>37526DA425E5430474A14FBFA1BC4525160B5FC1</key>
@@ -27,6 +29,8 @@
 		<string>../../../..</string>
 		<key>97FDCF03A971289FFED99A88138A5909EA5F5D0C</key>
 		<string>../../../../../addons/ofxISF</string>
+		<key>F4CCB893AFADB97238A965FD2F28717F1CAAE613</key>
+		<string>../../../../../addons/ofxSyphon</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:naotone/SFPC-Spring-2015.git</string>
@@ -51,6 +55,14 @@
 			<string>97FDCF03A971289FFED99A88138A5909EA5F5D0C</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ofxISF</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F4CCB893AFADB97238A965FD2F28717F1CAAE613</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxSyphon</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
